@@ -1,0 +1,15 @@
+﻿@using Business
+@model Pagina
+    @{ 
+        Layout = "~/Views/Shared/_Render.cshtml";
+    }
+
+<br />
+<div>
+    <a href="/paginas" class="btn btn-default">Voltar</a>
+</div>
+<br />
+<hr />
+<div class="content">
+    @Html.Raw(Model.Conteudo)
+</div>

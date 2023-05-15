@@ -1,0 +1,49 @@
+﻿@using Business
+@model List<Pagina>
+@{
+    ViewBag.Title = "Paginas";
+}
+
+
+
+@if (TempData["Sucesso"] != null)
+{
+    <div class="alert alert-success">@TempData["Sucesso"]</div>
+}
+@if (TempData["Erro"] != null)
+{
+    <div class="alert alert-success">@TempData["Erro"]</div>
+}
+<div class="jumbotron">
+    <h3>Páginas</h3>
+    <div>
+        <a href="/paginas/novo" class="btn btn-default">Nova página</a>
+    </div>
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>Nome</td>
+            <td>Data</td>
+            <td>Render</td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Nome</td>
+                <td>@p.Data</td>
+                <td>
+                    <a href="/paginas/@p.Id/preview" target="_blank" class="btn btn-warning">Preview</a>
+                </td>
+                <td>
+                    <a href="/paginas/@p.Id/editar" class="btn btn-primary">Alterar dados</a>
+                </td>
+                <td>
+                    <a href="/paginas/@p.Id/excluir" class="btn btn-danger" onclick="validaExclusao(@p.Id, event)">Excluir dados</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
